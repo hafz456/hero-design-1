@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hero (text only) | Bahasa Indonesia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,800;9..144,900&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #14213d;
+      --red: #d8283b;
+      --gold: #f4b942;
+      --paper: #fbf3df;
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--red);
+      color: var(--paper);
+    }
+
+    /* ---------- Hero layout ---------- */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background-color: var(--red);
+      background-image: radial-gradient(rgba(20, 33, 61, .2) 1.4px, transparent 1.6px);
+      background-size: 18px 18px;
+    }
+
+    .hero {
+      flex: 1;
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(40px, 7vw, 96px) clamp(24px, 5vw, 72px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: clamp(32px, 5vw, 56px);
+    }
+
+    #hero-title {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 900;
+      font-size: clamp(2.3rem, 7vw, 6.2rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--paper);
+      text-shadow: 0.045em 0.045em 0 var(--navy);
+    }
+
+    /* ---------- Pushable button ---------- */
+    .btn {
+      position: relative;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      outline-offset: 6px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn .edge {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: var(--navy);
+    }
+
+    .btn .front {
+      position: relative;
+      display: block;
+      padding: 16px 40px;
+      border-radius: 14px;
+      border: 3px solid var(--navy);
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1.15rem;
+      transform: translateY(-7px);
+      transition: transform 160ms ease;
+    }
+
+    .btn:hover .front { transform: translateY(-9px); }
+    .btn:active .front { transform: translateY(-2px); transition-duration: 40ms; }
+    .btn:focus-visible { outline: 3px solid var(--paper); }
+
+    /* ---------- Phrase ticker ---------- */
+    .ticker {
+      width: 104%;
+      margin: 0 -2% clamp(20px, 3vw, 36px);
+      overflow: hidden;
+      background: var(--gold);
+      border-block: 3px solid var(--navy);
+      color: var(--navy);
+      transform: rotate(-1.2deg);
+    }
+
+    .track {
+      display: flex;
+      width: max-content;
+      animation: scroll 38s linear infinite;
+    }
+
+    .phrases {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 28px;
+      padding: 14px 14px 14px 0;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .phrases li {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      white-space: nowrap;
+      font-weight: 500;
+      font-size: 1.05rem;
+    }
+
+    .phrases li::after {
+      content: "";
+      width: 9px;
+      height: 9px;
+      background: var(--navy);
+      transform: rotate(45deg);
+    }
+
+    .phrases b {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 900;
+      font-size: 1.35rem;
+      margin-right: 8px;
+    }
+
+    @keyframes scroll {
+      to { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .track { animation: none; }
+      .btn .front { transition: none; }
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 700px) {
+      #hero-title { font-size: clamp(2.3rem, 11vw, 3.4rem); }
+      #hero-title br { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <section id="hero">
+    <div class="hero">
+      <h1 id="hero-title">
+        Discover Your<br />New World Through<br />Bahasa Indonesia.
+      </h1>
+      <button id="hero-btn" class="btn">
+        <span class="edge"></span>
+        <span class="front" id="hero-btn-text">Get Started</span>
+      </button>
+    </div>
+
+    <div class="ticker">
+      <div class="track">
+        <ul class="phrases">
+          <li><b>Halo</b> Hello</li>
+          <li><b>Apa kabar?</b> How are you?</li>
+          <li><b>Terima kasih</b> Thank you</li>
+          <li><b>Selamat pagi</b> Good morning</li>
+          <li><b>Sama-sama</b> You're welcome</li>
+          <li><b>Ayo belajar</b> Let's learn</li>
+          <li><b>Sampai jumpa</b> See you later</li>
+        </ul>
+        <ul class="phrases" aria-hidden="true">
+          <li><b>Halo</b> Hello</li>
+          <li><b>Apa kabar?</b> How are you?</li>
+          <li><b>Terima kasih</b> Thank you</li>
+          <li><b>Selamat pagi</b> Good morning</li>
+          <li><b>Sama-sama</b> You're welcome</li>
+          <li><b>Ayo belajar</b> Let's learn</li>
+          <li><b>Sampai jumpa</b> See you later</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
